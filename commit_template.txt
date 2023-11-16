@@ -1,0 +1,11 @@
+[Module: 0X] [Ex: 0Y] Short Description of Changes
+
+Detailed description:
+#- Explain the changes made in this commit.
+#- Mention the reasons for these changes and their impact.
+#- Reference any related issue or task number, if applicable.
+
+Testing:
+#- Describe any testing done to ensure the functionality or fix.
+#- Include test results or scenarios, if relevant.
+
