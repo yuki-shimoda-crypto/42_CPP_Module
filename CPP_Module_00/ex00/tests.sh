@@ -2,9 +2,9 @@
 TARGET=./${TARGET:-"megaphone"}
 
 # ANSIエスケープコードを定義
-GREEN='\033[0;32m'
+NC='\033[0m'
 RED='\033[0;31m'
-NC='\033[0m' # 色をリセット
+GREEN='\033[0;32m'
 
 function run_test {
   output=$($TARGET "${@:1:$#-1}")
