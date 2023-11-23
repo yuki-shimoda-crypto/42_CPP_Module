@@ -7,18 +7,21 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 CXXFLAGS_DEBUG = $(CXXFLAGS) -g -fsanitize=address -fsanitize=leak -fsanitize=undefined
 
 # リンカフラグ
-LDFLAGS =
-LDFLAGS_DEBUG = -g -fsanitize=address -fsanitize=leak -fsanitize=undefined
+#LDFLAGS =
+#LDFLAGS_DEBUG = -g -fsanitize=address -fsanitize=leak -fsanitize=undefined
 
-NAME = megaphone
+NAME = PhoneBook
 NAME_DEBUG = $(NAME)_debug
 
-SRCS = megaphone.cpp
+SRCS = main.cpp \
+       Contact.cpp \
+       PhoneBook.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS_DEBUG = $(SRCS:.cpp=.debug.o)
 
-HEADERS = 
+HEADERS = Contact.hpp \
+          PhoneBook.hpp
 
 .PHONY: all
 all: $(NAME)
@@ -27,10 +30,10 @@ all: $(NAME)
 debug: $(NAME_DEBUG)
 
 $(NAME): $(OBJS)
-	$(CXX) $(LDFLAGS) -o $@ $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
 $(NAME_DEBUG): $(OBJS_DEBUG)
-	$(CXX) $(LDFLAGS_DEBUG) -o $@ $(OBJS_DEBUG) 
+	$(CXX) $(CXXFLAGS_DEBUG) -o $@ $(OBJS_DEBUG) 
 
 %.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
