@@ -10,15 +10,16 @@ CXXFLAGS_DEBUG = $(CXXFLAGS) -g -fsanitize=address -fsanitize=leak -fsanitize=un
 #LDFLAGS =
 #LDFLAGS_DEBUG = -g -fsanitize=address -fsanitize=leak -fsanitize=undefined
 
-NAME = megaphone
+NAME = Account
 NAME_DEBUG = $(NAME)_debug
 
-SRCS = megaphone.cpp
+SRCS = Account.cpp \
+       tests.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS_DEBUG = $(SRCS:.cpp=.debug.o)
 
-HEADERS =
+HEADERS = Account.hpp
 
 .PHONY: all
 all: $(NAME)
