@@ -70,7 +70,7 @@ bool Account::makeWithdrawal(int withdrawal) {
   this->_nbWithdrawals += 1;
   std::cout << "index:" << this->_accountIndex << ";"
             << "p_amount:" << p_amount << ";"
-            << "withdrawal" << withdrawal << ";"
+            << "withdrawal:" << withdrawal << ";"
             << "amount:" << this->_amount << ";"
             << "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
   return (true);
