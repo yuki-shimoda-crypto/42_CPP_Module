@@ -10,7 +10,7 @@ PhoneBook::PhoneBook() : _index(0) {}
 void PhoneBook::add(void) {
   std::string str;
   std::size_t field = 0;
-  bool is_valid_phone_num = true;
+  bool is_valid_input = true;
 
   while (field <= Contact::DARKEST_SEC) {
     std::cout << "ADD ("
@@ -18,22 +18,20 @@ void PhoneBook::add(void) {
               << "): ";
     std::getline(std::cin, str);
     if (std::cin.eof() || std::cin.fail()) {
-      std::cin.clear();
-      std::clearerr(stdin);
-      std::cout << std::endl;
+      _handleCinFailure();
       return;
     }
-    if (static_cast<Contact::Field>(field) == Contact::PHONE_NUM) {
-      for (std::size_t i = 0; i < str.size(); i++) {
-        if (!std::isdigit(static_cast<unsigned char>(str[i]))) {
-          std::cout << "Invalid input, Please enter a number." << std::endl;
-          is_valid_phone_num = false;
-          break;
-        }
-      }
+    if (str.empty()) {
+      is_valid_input = false;
+      std::cout << "The "
+                << Contact::getFieldName(static_cast<Contact::Field>(field))
+                << " field cannot be empty. Please enter a value." << std::endl;
     }
-    if (!is_valid_phone_num) {
-      is_valid_phone_num = true;
+    if (field == Contact::PHONE_NUM && !_validatePhoneNumber(str)) {
+      is_valid_input = false;
+    }
+    if (!is_valid_input) {
+      is_valid_input = true;
       continue;
     }
     _contacts[(this->_index) % 8].setContact(
@@ -42,28 +40,6 @@ void PhoneBook::add(void) {
   }
   this->_index += 1;
   return;
-}
-
-void PhoneBook::_displayConstactsAll(int index) const {
-  std::cout << std::setw(10) << index << "|";
-  for (int i = 0; i < 5; i++) {
-    std::cout << std::setw(10)
-              << this->_contacts[index].getContact(
-                     static_cast<Contact::Field>(i))
-              << "|";
-  }
-  std::cout << std::endl;
-}
-
-void PhoneBook::_displayContactsPartial(int index) const {
-  std::cout << std::setw(10) << index << "|";
-  for (int i = 0; i < 3; i++) {
-    std::cout << std::setw(10)
-              << this->_contacts[index].getContact(
-                     static_cast<Contact::Field>(i))
-              << "|";
-  }
-  std::cout << std::endl;
 }
 
 void PhoneBook::search() const {
@@ -75,20 +51,18 @@ void PhoneBook::search() const {
     return;
   }
   for (int i = 0; i < std::min(this->_index, 8); i++) {
-    this->_displayContactsPartial(i);
+    this->_displayContacts(i, Contact::NICKNAME);
   }
   while (1) {
     std::cout << "SEARCH: Please enter a contact index (0-"
               << std::min(this->_index - 1, 7) << "): ";
     std::getline(std::cin, str);
     if (std::cin.eof() || std::cin.fail()) {
-      std::cin.clear();
-      std::clearerr(stdin);
-      std::cout << std::endl;
+      _handleCinFailure();
       return;
     }
     try {
-      index = PhoneBook::stoi(str);
+      index = PhoneBook::_stoi(str);
       if (index < 0 || std::min(this->_index - 1, 7) < index) {
         throw std::out_of_range("");
       }
@@ -102,11 +76,13 @@ void PhoneBook::search() const {
     }
     break;
   }
-  this->_displayConstactsAll(index);
+  this->_displayContacts(index, Contact::DARKEST_SEC);
   return;
 }
 
-int PhoneBook::stoi(const std::string &str) {
+void PhoneBook::exit() const { std::exit(0); }
+
+int PhoneBook::_stoi(const std::string &str) {
   int sign = 1;
   long num = 0;
   size_t i = 0;
@@ -136,4 +112,34 @@ int PhoneBook::stoi(const std::string &str) {
   return (static_cast<int>(num * sign));
 }
 
-void PhoneBook::exit() const { std::exit(0); }
+void PhoneBook::_displayContacts(int index, int field) const {
+  std::string contact;
+
+  std::cout << std::setw(10) << index << "|";
+  for (int i = 0; i <= field; i++) {
+    contact = _contacts[index].getContact(static_cast<Contact::Field>(i));
+    if (10 < contact.size()) {
+      contact = contact.substr(0, 9) + ".";
+    }
+    std::cout << std::setw(10)
+              << contact
+              << "|";
+  }
+  std::cout << std::endl;
+}
+
+void PhoneBook::_handleCinFailure() const {
+  std::cin.clear();
+  std::clearerr(stdin);
+  std::cout << std::endl;
+}
+
+bool PhoneBook::_validatePhoneNumber(const std::string &phone) const {
+  for (std::size_t i = 0; i < phone.size(); i++) {
+    if (!std::isdigit(static_cast<unsigned char>(phone[i]))) {
+      std::cout << "Invalid input, Please enter a number." << std::endl;
+      return (false);
+    }
+  }
+  return (true);
+}

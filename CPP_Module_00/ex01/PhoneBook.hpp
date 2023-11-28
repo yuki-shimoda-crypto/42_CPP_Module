@@ -9,13 +9,14 @@ public:
   void add();
   void search() const;
   void exit() const;
-  static int stoi(const std::string &str);
 
 private:
   Contact _contacts[8];
   int _index;
-  void _displayConstactsAll(int index) const;
-  void _displayContactsPartial(int index) const;
+  static int _stoi(const std::string &str);
+  void _displayContacts(int index, int field) const;
+  void _handleCinFailure() const;
+  bool _validatePhoneNumber(const std::string &phone) const;
 };
 
 #endif
