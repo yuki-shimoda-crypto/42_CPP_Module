@@ -10,15 +10,17 @@ CXXFLAGS_DEBUG = $(CXXFLAGS) -g -fsanitize=address -fsanitize=leak -fsanitize=un
 #LDFLAGS =
 #LDFLAGS_DEBUG = -g -fsanitize=address -fsanitize=leak -fsanitize=undefined
 
-NAME = megaphone
+NAME = Zombie
 NAME_DEBUG = $(NAME)_debug
 
-SRCS = megaphone.cpp
+SRCS = main.cpp \
+       Zombie.cpp \
+       zombieHorde.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS_DEBUG = $(SRCS:.cpp=.debug.o)
 
-HEADERS = 
+HEADERS = Zombie.hpp
 
 .PHONY: all
 all: $(NAME)
