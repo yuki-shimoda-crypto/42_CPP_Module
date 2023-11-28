@@ -7,6 +7,10 @@ int main(void) {
   }
   {
     Zombie *new_zombie = Zombie::newZombie("newZombie");
+    if (new_zombie == NULL) {
+      std::cerr << "Failed to create new zombie." << std::endl;
+      return (1);
+    }
     new_zombie->announce();
     delete new_zombie;
   }
