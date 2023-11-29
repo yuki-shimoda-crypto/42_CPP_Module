@@ -1,4 +1,4 @@
-CXX = g++
+CXX = c++
 
 # 基本のコンパイルフラグ
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

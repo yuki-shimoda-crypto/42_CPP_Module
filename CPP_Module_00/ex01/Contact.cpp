@@ -14,7 +14,7 @@ void Contact::setContact(const std::string &str, const Contact::Field &field) {
   }
 }
 
-std::string Contact::getContact(const Contact::Field &field) const {
+const std::string &Contact::getContact(const Contact::Field &field) const {
   if (field == FIRSTNAME) {
     return (this->_firstname);
   } else if (field == LASTNAME) {

@@ -13,7 +13,7 @@ public:
     DARKEST_SEC,
   };
   void setContact(const std::string &str, const Field &field);
-  std::string getContact(const Field &field) const;
+  const std::string &getContact(const Field &field) const;
   static std::string getFieldName(const Field &field);
 
 private:
