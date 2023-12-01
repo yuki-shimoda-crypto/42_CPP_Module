@@ -14,7 +14,7 @@ void Harl::invalid(void) const { std::cout << "Invalid level" << std::endl; }
 
 void Harl::debug(void) const {
   std::cout
-      << " love having extra bacon for my "
+      << "I love having extra bacon for my "
          "7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!"
       << std::endl;
 }
@@ -28,7 +28,7 @@ void Harl::info(void) const {
 
 void Harl::warning(void) const {
   std::cout
-      << " think I deserve to have some extra bacon for free. I’ve been coming "
+      << "I think I deserve to have some extra bacon for free. I’ve been coming "
          "for years whereas you started working here since last month."
       << std::endl;
 }
