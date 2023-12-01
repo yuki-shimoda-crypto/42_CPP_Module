@@ -10,5 +10,4 @@ int main(void) {
   std::cout << "input DEBUG" << std::endl;
   harl.complain("DEBUG");
   std::cout << std::endl;
-
 }
