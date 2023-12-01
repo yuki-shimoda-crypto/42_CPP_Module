@@ -33,7 +33,7 @@ void Harl::complain(const std::string &level) const {
 void Harl::debug(void) const {
   std::cout << "[ DEBUG ]" << std::endl;
   std::cout
-      << " love having extra bacon for my "
+      << "I love having extra bacon for my "
          "7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!"
       << std::endl;
   std::cout << std::endl;
@@ -51,7 +51,7 @@ void Harl::info(void) const {
 void Harl::warning(void) const {
   std::cout << "[ WARNING ]" << std::endl;
   std::cout
-      << " think I deserve to have some extra bacon for free. I’ve been coming "
+      << "I think I deserve to have some extra bacon for free. I’ve been coming "
          "for years whereas you started working here since last month."
       << std::endl;
   std::cout << std::endl;
