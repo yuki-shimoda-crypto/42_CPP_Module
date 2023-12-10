@@ -10,7 +10,7 @@ CXXFLAGS_DEBUG = $(CXXFLAGS) -g -fsanitize=address -fsanitize=leak -fsanitize=un
 #LDFLAGS =
 #LDFLAGS_DEBUG = -g -fsanitize=address -fsanitize=leak -fsanitize=undefined
 
-NAME = ScavTrap
+NAME = FragTrap
 NAME_DEBUG = $(NAME)_debug
 
 SRCS =  ClapTrap.cpp \
