@@ -10,17 +10,17 @@ public:
   ClapTrap(std::string name);
   ClapTrap(const ClapTrap &claptrap);
   ClapTrap &operator=(const ClapTrap &claptrap);
-  ~ClapTrap();
+  virtual ~ClapTrap();
   void attack(const std::string &target);
   void takeDamage(unsigned int amount);
   void beRepaired(unsigned int amount);
-  int getHP(void);
+  int getHP(void) const;
 
-private:
+protected:
   std::string _name;
-  int _hit_point;
-  int _energy_point;
-  int _attack_damage;
+  int _hitPoint;
+  int _energyPoint;
+  int _attackDamage;
 };
 
 #endif
