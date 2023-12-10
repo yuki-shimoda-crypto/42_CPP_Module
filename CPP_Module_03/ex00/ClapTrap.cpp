@@ -71,4 +71,4 @@ void ClapTrap::beRepaired(unsigned int amount) {
   }
 }
 
-int ClapTrap::getHP(void) { return (this->_hitPoint); }
+int ClapTrap::getHP(void) const { return (this->_hitPoint); }
