@@ -51,11 +51,14 @@ void ScavTrap::attack(const std::string &target) {
   }
 }
 
-void ScavTrap::guardGate() const {
-  if (0 < this->_hitPoint) {
+void ScavTrap::guardGate() {
+  if (0 < this->_energyPoint && 0 < this->_hitPoint) {
+    this->_energyPoint -= 1;
     std::cout << "ScavTrap is now in Gate keeper mode" << std::endl;
-  } else {
+  } else if (this->_hitPoint <= 0) {
     std::cout << "ScavTrap " << this->_name << " has already been knocked out!"
               << std::endl;
+  } else {
+    std::cout << "ScavTrap " << this->_name << " has no energy." << std::endl;
   }
 }
