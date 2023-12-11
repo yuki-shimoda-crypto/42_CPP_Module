@@ -1,5 +1,22 @@
-#include "Dog.hpp"
 #include "Cat.hpp"
+#include "Dog.hpp"
+
+static void testDeepCopy() {
+  Cat originalCat;
+  Cat copiedCat = originalCat;
+
+  std::cout << "Testing deep copy for Cat class:" << std::endl;
+
+  if ((originalCat.getBrain()) != (copiedCat.getBrain())) {
+    std::cout << "Deep copy confirmed: Original and copied Cats have different "
+                 "Brain addresses."
+              << std::endl;
+  } else {
+    std::cout << "Shallow copy detected: Original and copied Cats have the "
+                 "same Brain addresses."
+              << std::endl;
+  }
+}
 
 int main() {
   {
@@ -17,12 +34,8 @@ int main() {
     }
   }
   {
-    Dog dog1;
-    Dog dog2 = dog1;
-    Dog dog3;
-
-    dog3 = dog1;
-    std::cout << std::endl;
+    std::cout << "-------------------------" << std::endl;
+    testDeepCopy();
   }
-  return 0;
+  return (0);
 }

@@ -10,7 +10,7 @@ public:
   Brain(const Brain &brain);
   Brain &operator=(const Brain &brain);
   ~Brain();
-  std::string getIdea(int i) const;
+  const std::string &getIdea(int i) const;
 
 private:
   std::string _ideas[100];

@@ -26,5 +26,4 @@ Brain::~Brain() {
   std::cout << "Brain: Default destructor called" << std::endl;
 }
 
-std::string Brain::getIdea(int i) const { return (this->_ideas[i]); }
-
+const std::string &Brain::getIdea(int i) const { return (this->_ideas[i]); }
