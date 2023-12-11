@@ -20,7 +20,8 @@ SRCS =  ClapTrap.cpp \
 OBJS = $(SRCS:.cpp=.o)
 OBJS_DEBUG = $(SRCS:.cpp=.debug.o)
 
-HEADERS = Fixed.hpp
+HEADERS = ClapTrap.hpp \
+          ScavTrap.hpp
 
 .PHONY: all
 all: $(NAME)
