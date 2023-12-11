@@ -3,31 +3,21 @@
 
 int main() {
   {
-    const Animal *animals[4];
+//    const Animal *meta = new Animal();
+    const Animal *j = new Dog();
+    const Animal *i = new Cat();
 
-    for (int i = 0; i < 4; i++) {
-      if (i < 2) {
-        animals[i] = new Dog;
-      } else {
-        animals[i] = new Cat;
-      }
-    }
-    for (int i = 0; i < 4; i++) {
-      delete animals[i];
-    }
-  }
-  {
-    Dog dog1;
-    Dog dog2 = dog1;
-    Dog dog3;
+//    std::cout << meta->getType() << " " << std::endl;
+    std::cout << j->getType() << " " << std::endl;
+    std::cout << i->getType() << " " << std::endl;
 
-    dog3 = dog1;
-    std::cout << std::endl;
+//    meta->makeSound();
+    j->makeSound();
+    i->makeSound();
+
+//    delete meta;
+    delete j;
+    delete i;
   }
-  //  {
-  //    Animal animal;
-  //
-  //    animal.makeSound();
-  //  }
-  return 0;
+  return (0);
 }

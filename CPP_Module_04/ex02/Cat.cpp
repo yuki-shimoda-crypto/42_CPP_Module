@@ -18,7 +18,6 @@ Cat &Cat::operator=(const Cat &cat) {
   std::cout << "Cat: Copy assign operator called" << std::endl;
   if (this != &cat) {
     Animal::operator=(cat);
-    this->_type = cat._type;
     delete this->_brain;
     this->_brain = new Brain(*(cat._brain));
   }
@@ -31,3 +30,5 @@ Cat::~Cat() {
 }
 
 void Cat::makeSound() const { std::cout << "мяу" << std::endl; }
+
+const Brain *Cat::getBrain() const { return (this->_brain); }
