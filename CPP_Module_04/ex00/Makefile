@@ -23,7 +23,11 @@ SRCS =  Animal.cpp \
 OBJS = $(SRCS:.cpp=.o)
 OBJS_DEBUG = $(SRCS:.cpp=.debug.o)
 
-HEADERS = Fixed.hpp
+HEADERS = Animal.hpp \
+          Cat.hpp \
+          Dog.hpp \
+          WrongAnimal.hpp \
+          WrongCat.hpp
 
 .PHONY: all
 all: $(NAME)

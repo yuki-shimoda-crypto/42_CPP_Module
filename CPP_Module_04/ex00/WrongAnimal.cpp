@@ -4,6 +4,10 @@ WrongAnimal::WrongAnimal() : _type("WrongAnimal") {
   std::cout << "WrongAnimal: Default constructor called" << std::endl;
 }
 
+WrongAnimal::WrongAnimal(const std::string &type) : _type(type) {
+  std::cout << "WrongAnimal: Default constructor called" << std::endl;
+}
+
 WrongAnimal::WrongAnimal(const WrongAnimal &wrong_animal) {
   std::cout << "WrongAnimal: Copy constructor called" << std::endl;
   *this = wrong_animal;
