@@ -2,6 +2,15 @@
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 
+Bureaucrat::Bureaucrat(const int n) : _name("Default"), _grade(n) {
+  if (this->_grade < 1) {
+    throw GradeTooHighException();
+  }
+  if (this->_grade > 150) {
+    throw GradeTooLowException();
+  }
+};
+
 Bureaucrat::Bureaucrat(const std::string &name) : _name(name), _grade(150) {}
 
 Bureaucrat::Bureaucrat(const std::string &name, const int n)

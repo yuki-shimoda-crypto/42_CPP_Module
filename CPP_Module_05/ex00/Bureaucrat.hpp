@@ -8,6 +8,7 @@
 class Bureaucrat {
 public:
   Bureaucrat();
+  Bureaucrat(const int n);
   Bureaucrat(const std::string &name);
   Bureaucrat(const std::string &name, const int n);
   Bureaucrat(const Bureaucrat &bureaucrat);
