@@ -16,7 +16,7 @@ public:
   ~Bureaucrat();
   const std::string &getName() const;
   int getGrade() const;
-  void gradeUP();
+  void gradeUp();
   void gradeDown();
   class GradeTooHighException : public std::exception {
   public:

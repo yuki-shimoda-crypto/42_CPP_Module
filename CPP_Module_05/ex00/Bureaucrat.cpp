@@ -39,7 +39,7 @@ const std::string &Bureaucrat::getName() const { return (this->_name); }
 
 int Bureaucrat::getGrade() const { return (this->_grade); }
 
-void Bureaucrat::gradeUP() {
+void Bureaucrat::gradeUp() {
   if (this->_grade <= 1) {
     throw GradeTooHighException();
   }

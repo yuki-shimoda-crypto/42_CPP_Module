@@ -6,10 +6,10 @@ int main() {
     std::cout << a << std::endl;
 
     try {
-      std::cout << "gradeUP a" << std::endl;
-      a.gradeUP();
+      std::cout << "gradeUp a" << std::endl;
+      a.gradeUp();
       std::cout << a << std::endl;
-    } catch (std::exception &e) {
+    } catch (Bureaucrat::GradeTooHighException &e) {
       std::cout << e.what() << std::endl;
     }
 
@@ -17,7 +17,7 @@ int main() {
       std::cout << "gradeDown a" << std::endl;
       a.gradeDown();
       std::cout << a << std::endl;
-    } catch (std::exception &e) {
+    } catch (Bureaucrat::GradeTooLowException &e) {
       std::cout << e.what() << std::endl;
     }
 
@@ -25,7 +25,7 @@ int main() {
       std::cout << "gradeDown a" << std::endl;
       a.gradeDown();
       std::cout << a << std::endl;
-    } catch (std::exception &e) {
+    } catch (Bureaucrat::GradeTooLowException &e) {
       std::cout << e.what() << std::endl;
     }
   }
@@ -35,10 +35,10 @@ int main() {
     std::cout << b << std::endl;
 
     try {
-      std::cout << "gradeUP b" << std::endl;
-      b.gradeUP();
+      std::cout << "gradeUp b" << std::endl;
+      b.gradeUp();
       std::cout << b << std::endl;
-    } catch (std::exception &e) {
+    } catch (Bureaucrat::GradeTooHighException &e) {
       std::cout << e.what() << std::endl;
     }
 
@@ -46,7 +46,7 @@ int main() {
       std::cout << "gradeDown b" << std::endl;
       b.gradeDown();
       std::cout << b << std::endl;
-    } catch (std::exception &e) {
+    } catch (Bureaucrat::GradeTooLowException &e) {
       std::cout << e.what() << std::endl;
     }
   }
