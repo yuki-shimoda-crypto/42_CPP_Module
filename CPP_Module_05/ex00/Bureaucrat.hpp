@@ -19,24 +19,16 @@ public:
   void gradeDown();
   class GradeTooHighException : public std::exception {
   public:
-    virtual const char *what() const throw() { return ("Grade too high"); }
+    const char *what() const throw();
   };
   class GradeTooLowException : public std::exception {
   public:
-    virtual const char *what() const throw() { return ("Grade too low"); }
+    const char *what() const throw();
   };
 
 private:
   const std::string _name;
   int _grade;
-};
-class GradeTooHighException : public std::exception {
-public:
-  const char *what() const throw() { return "Grade too high"; }
-};
-class GradeTooLowException : public std::exception {
-public:
-  const char *what() const throw() { return "Grade too low"; }
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
