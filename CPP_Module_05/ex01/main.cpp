@@ -3,8 +3,8 @@
 
 int main() {
   {
-    Bureaucrat a("Bureaucrat A", 150);
-    Form b("Form B", 150, 150);
+    Bureaucrat a("Bureaucrat-A", 150);
+    Form b("Form-B", 150, 150);
 
     std::cout << a << std::endl;
     std::cout << b << std::endl;
@@ -15,8 +15,8 @@ int main() {
     std::cout << std::endl;
   }
   {
-    Bureaucrat a("Bureaucrat A", 150);
-    Form b("Form B", 149, 149);
+    Bureaucrat a("Bureaucrat-A", 150);
+    Form b("Form-B", 149, 149);
 
     std::cout << a << std::endl;
     std::cout << b << std::endl;

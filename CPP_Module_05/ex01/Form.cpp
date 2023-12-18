@@ -1,13 +1,15 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form() : _name("Default"), _gradeToSign(150), _gradeToExecute(150){};
+Form::Form()
+    : _name("Default"), _signed(false), _gradeToSign(150),
+      _gradeToExecute(150){};
 
 Form::Form(const std::string &name)
-    : _name(name), _gradeToSign(150), _gradeToExecute(150){};
+    : _name(name), _signed(false), _gradeToSign(150), _gradeToExecute(150){};
 
 Form::Form(const int gradeToSign, const int gradeToExecute)
-    : _name("Default"), _gradeToSign(gradeToSign),
+    : _name("Default"), _signed(false), _gradeToSign(gradeToSign),
       _gradeToExecute(gradeToExecute) {
   if (this->_gradeToSign < 1 || this->_gradeToExecute < 1) {
     throw GradeTooHighException();
@@ -19,8 +21,10 @@ Form::Form(const int gradeToSign, const int gradeToExecute)
 
 Form::Form(const std::string &name, const int gradeToSign,
            const int gradeToExecute)
-    : _name(name), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
-  if (this->_gradeToSign < 1 || this->_gradeToExecute < 1) { throw GradeTooHighException();
+    : _name(name), _signed(false), _gradeToSign(gradeToSign),
+      _gradeToExecute(gradeToExecute) {
+  if (this->_gradeToSign < 1 || this->_gradeToExecute < 1) {
+    throw GradeTooHighException();
   }
   if (this->_gradeToSign > 150 || this->_gradeToExecute > 150) {
     throw GradeTooLowException();
@@ -28,7 +32,8 @@ Form::Form(const std::string &name, const int gradeToSign,
 };
 
 Form::Form(const Form &form)
-    : _name(form.getName()), _gradeToSign(form.getGradeToSign()),
+    : _name(form.getName()), _signed(form.getSign()),
+      _gradeToSign(form.getGradeToSign()),
       _gradeToExecute(form.getGradeToExecute()){};
 
 Form &Form::operator=(const Form &form) {
