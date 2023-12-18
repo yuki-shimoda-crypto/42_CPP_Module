@@ -17,15 +17,7 @@ int main() {
     std::cout << sform << std::endl;
 
     a.signForm(sform);
-    try {
-      sform.execute(a);
-    } catch (const AForm::NotSignedException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::GradeTooLowException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::NotOpenException &e) {
-      std::cout << e.what() << std::endl;
-    }
+    a.executeForm(sform);
   }
 
   {
@@ -41,15 +33,7 @@ int main() {
     std::cout << sform << std::endl;
 
     a.signForm(sform);
-    try {
-      sform.execute(a);
-    } catch (const AForm::NotSignedException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::GradeTooLowException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::NotOpenException &e) {
-      std::cout << e.what() << std::endl;
-    }
+    a.executeForm(sform);
   }
 
   {
@@ -64,15 +48,7 @@ int main() {
     std::cout << sform << std::endl;
 
     a.signForm(sform);
-    try {
-      sform.execute(a);
-    } catch (const AForm::NotSignedException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::GradeTooLowException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::NotOpenException &e) {
-      std::cout << e.what() << std::endl;
-    }
+    a.executeForm(sform);
   }
 
   {
@@ -87,15 +63,7 @@ int main() {
     std::cout << sform << std::endl;
 
     a.signForm(sform);
-    try {
-      sform.execute(a);
-    } catch (const AForm::NotSignedException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::GradeTooLowException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::NotOpenException &e) {
-      std::cout << e.what() << std::endl;
-    }
+    a.executeForm(sform);
   }
 
   {
@@ -110,13 +78,7 @@ int main() {
     std::cout << sform << std::endl;
 
     a.signForm(sform);
-    try {
-      sform.execute(a);
-    } catch (const AForm::NotSignedException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::GradeTooLowException &e) {
-      std::cout << e.what() << std::endl;
-    }
+    a.executeForm(sform);
   }
 
   {
@@ -131,13 +93,7 @@ int main() {
     std::cout << sform << std::endl;
 
     a.signForm(sform);
-    try {
-      sform.execute(a);
-    } catch (const AForm::NotSignedException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::GradeTooLowException &e) {
-      std::cout << e.what() << std::endl;
-    }
+    a.executeForm(sform);
   }
 
   {
@@ -152,13 +108,7 @@ int main() {
     std::cout << sform << std::endl;
 
     a.signForm(sform);
-    try {
-      sform.execute(a);
-    } catch (const AForm::NotSignedException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::GradeTooLowException &e) {
-      std::cout << e.what() << std::endl;
-    }
+    a.executeForm(sform);
   }
 
   {
@@ -173,13 +123,7 @@ int main() {
     std::cout << pForm << std::endl;
 
     a.signForm(pForm);
-    try {
-      pForm.execute(a);
-    } catch (const AForm::NotSignedException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::GradeTooLowException &e) {
-      std::cout << e.what() << std::endl;
-    }
+    a.executeForm(pForm);
   }
 
   {
@@ -195,13 +139,7 @@ int main() {
     std::cout << pForm << std::endl;
 
     a.signForm(pForm);
-    try {
-      pForm.execute(a);
-    } catch (const AForm::NotSignedException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::GradeTooLowException &e) {
-      std::cout << e.what() << std::endl;
-    }
+    a.executeForm(pForm);
   }
 
   {
@@ -216,12 +154,6 @@ int main() {
     std::cout << pForm << std::endl;
 
     a.signForm(pForm);
-    try {
-      pForm.execute(a);
-    } catch (const AForm::NotSignedException &e) {
-      std::cout << e.what() << std::endl;
-    } catch (const AForm::GradeTooLowException &e) {
-      std::cout << e.what() << std::endl;
-    }
+    a.executeForm(pForm);
   }
 }

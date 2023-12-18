@@ -29,6 +29,7 @@ public:
     const char *what() const throw();
   };
   void signForm(AForm &form);
+  void executeForm(AForm const &form);
 
 private:
   const std::string _name;
