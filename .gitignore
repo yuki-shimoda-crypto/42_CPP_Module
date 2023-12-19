@@ -4,6 +4,7 @@ FragTrap
 Animal
 Animal_debug
 Bureaucrat
+convert
 
 subjects
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,vim,c++,macos,linux
