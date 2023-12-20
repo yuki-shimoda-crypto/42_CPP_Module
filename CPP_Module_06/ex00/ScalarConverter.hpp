@@ -1,9 +1,9 @@
 #ifndef SCALARCONVERTER_HPP
 #define SCALARCONVERTER_HPP
 
-#include <string>
 #include <iostream>
 #include <limits>
+#include <string>
 
 enum ScalarType {
   _CHAR,
@@ -30,7 +30,8 @@ public:
   static void convertFromDouble(const double d);
 
   static bool isPseudoLiterals(const std::string &literal);
-  static void printPseudoLiterals(const ScalarType type, const std::string &literal);
+  static void printPseudoLiterals(const ScalarType type,
+                                  const std::string &literal);
 
 private:
   ScalarConverter();

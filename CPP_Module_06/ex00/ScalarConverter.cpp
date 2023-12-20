@@ -20,18 +20,33 @@ void ScalarConverter::convert(const std::string &literal) {
   if (scalarType == _CHAR) {
     convertFromChar(literal[0]);
   } else if (scalarType == _INT) {
-    convertFromInt(stoi(literal));
+    try {
+      convertFromInt(std::stoi(literal));
+    } catch (const std::out_of_range &e) {
+      std::cout << "Error: Number out of range for int conversion."
+                << std::endl;
+    }
   } else if (scalarType == _FLOAT) {
     if (isPseudoLiterals(literal)) {
       printPseudoLiterals(scalarType, literal);
     } else {
-      convertFromFloat(stof(literal));
+      try {
+        convertFromFloat(std::stof(literal));
+      } catch (const std::out_of_range &e) {
+        std::cout << "Error: Number out of range for float conversion."
+                  << std::endl;
+      }
     }
   } else if (scalarType == _DOUBLE) {
     if (isPseudoLiterals(literal)) {
       printPseudoLiterals(scalarType, literal);
     } else {
-      convertFromDouble(stod(literal));
+      try {
+        convertFromDouble(std::stod(literal));
+      } catch (const std::out_of_range &e) {
+        std::cout << "Error: Number out of range for double conversion."
+                  << std::endl;
+      }
     }
   } else {
     std::cout << "Please input char, int, float, or double" << std::endl;
@@ -116,6 +131,7 @@ bool ScalarConverter::isInt(const std::string &literal) {
 bool ScalarConverter::isFloat(const std::string &literal) {
   std::size_t n = literal.size();
   std::size_t numPoint = 0;
+  std::size_t i = 0;
 
   if (literal[n - 1] != 'f') {
     return (false);
@@ -123,7 +139,10 @@ bool ScalarConverter::isFloat(const std::string &literal) {
   if (literal == "-inff" || literal == "+inff" || literal == "nanf") {
     return (true);
   }
-  for (std::size_t i = 0; i < n - 1; i++) {
+  if (literal[i] == '-' || literal[i] == '+') {
+    i++;
+  }
+  for (; i < n - 1; i++) {
     if (!std::isdigit(literal[i]) && literal[i] != '.') {
       return (false);
     }
@@ -140,11 +159,15 @@ bool ScalarConverter::isFloat(const std::string &literal) {
 bool ScalarConverter::isDouble(const std::string &literal) {
   std::size_t n = literal.size();
   std::size_t numPoint = 0;
+  std::size_t i = 0;
 
   if (literal == "-inf" || literal == "+inf" || literal == "nan") {
     return (true);
   }
-  for (std::size_t i = 0; i < n; i++) {
+  if (literal[i] == '-' || literal[i] == '+') {
+    i++;
+  }
+  for (; i < n; i++) {
     if (!std::isdigit(literal[i]) && literal[i] != '.') {
       return (false);
     }
