@@ -1,10 +1,10 @@
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
-#include <iostream>
 #include <algorithm>
-#include <vector>
+#include <iostream>
 #include <iterator>
+#include <vector>
 
 class NotFoundException : public std::exception {
 public:
@@ -13,8 +13,9 @@ public:
   }
 };
 
-template <class T> T easyfind(T &container, int value) {
-  T result = std::find(std::begin(container), std::end(container), value);
+template <class T> class T::iterator easyfind(T &container, int value) {
+  class T::iterator result =
+      std::find(std::begin(container), std::end(container), value);
   if (result == std::end(container)) {
     throw NotFoundException();
   }
