@@ -13,10 +13,13 @@ public:
   Array &operator=(const Array &array);
   ~Array();
 
-  T operator[](std::size_t pos) const;
+  T &operator[](std::size_t pos);
+  const T &operator[](std::size_t pos) const;
   std::size_t size() const;
-  const T &getArray(std::size_t n) const;
-  void setArray(const T &array, std::size_t n);
+
+  //   debug
+  //   const T &getArray(std::size_t n) const;
+  //   void setArray(const T &array, std::size_t n);
 
 private:
   T *_array;
@@ -50,7 +53,15 @@ template <class T> Array<T> &Array<T>::operator=(const Array &array) {
 
 template <class T> Array<T>::~Array() { delete[] this->_array; }
 
-template <class T> T Array<T>::operator[](std::size_t pos) const {
+template <class T> T &Array<T>::operator[](std::size_t pos) {
+  if (pos < this->_arraySize) {
+    return (this->_array[pos]);
+  } else {
+    throw std::out_of_range("Index out of range");
+  }
+}
+
+template <class T> const T &Array<T>::operator[](std::size_t pos) const {
   if (pos < this->_arraySize) {
     return (this->_array[pos]);
   } else {
@@ -62,16 +73,17 @@ template <class T> std::size_t Array<T>::size() const {
   return (this->_arraySize);
 }
 
-template <class T> const T &Array<T>::getArray(std::size_t n) const {
-  if (n < this->_arraySize) {
-    return (_array[n]);
-  } else {
-    throw std::out_of_range("Index out of range");
-  }
-}
-
-template <class T> void Array<T>::setArray(const T &array, std::size_t n) {
-  this->_array[n] = array;
-}
+// debug
+// template <class T> const T &Array<T>::getArray(std::size_t n) const {
+//   if (n < this->_arraySize) {
+//     return (_array[n]);
+//   } else {
+//     throw std::out_of_range("Index out of range");
+//   }
+// }
+//
+// template <class T> void Array<T>::setArray(const T &array, std::size_t n) {
+//   this->_array[n] = array;
+// }
 
 #endif
