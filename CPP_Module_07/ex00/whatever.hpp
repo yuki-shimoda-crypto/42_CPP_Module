@@ -4,9 +4,8 @@
 #include <iostream>
 
 template <class T> void swap(T &a, T &b) {
-  T tmp;
+  T tmp = a;
 
-  tmp = a;
   a = b;
   b = tmp;
 }
