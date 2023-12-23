@@ -38,9 +38,11 @@ int main() {
   }
   {
     Span sp = Span(100000);
-    std::vector<int> range(10000);
+    std::vector<int> range;
 
-    std::iota(range.begin(), range.end(), 0);
+    for (int i = 0; i < 10000; i++) {
+      range.push_back(i);
+    }
     sp.addNumbers(range.begin(), range.end());
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
