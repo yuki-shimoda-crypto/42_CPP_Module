@@ -16,20 +16,19 @@ void Span::addNumber(int num) {
 };
 
 unsigned int Span::shortestSpan() const {
-  long shortest = std::numeric_limits<long int>::max();
+  unsigned int shortest = std::numeric_limits<unsigned int>::max();
 
   if (this->_nums.size() < 2) {
     throw std::logic_error("There are no numbers stored, or only one");
   }
-
   std::vector<int> tmp(this->_nums);
   std::sort(tmp.begin(), tmp.end());
   for (std::size_t i = 0; i < tmp.size() - 1; i++) {
-    if (static_cast<long>(tmp[i + 1] - tmp[i]) < shortest) {
+    if (static_cast<unsigned int>(tmp[i + 1] - tmp[i]) < shortest) {
       shortest = tmp[i + 1] - tmp[i];
     }
   }
-  return (static_cast<unsigned int>(shortest));
+  return (shortest);
 }
 
 unsigned int Span::longestSpan() const {
