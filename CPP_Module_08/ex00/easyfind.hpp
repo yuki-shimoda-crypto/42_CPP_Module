@@ -15,8 +15,8 @@ public:
 
 template <class T> typename T::iterator easyfind(T &container, int value) {
   typename T::iterator result =
-      std::find(std::begin(container), std::end(container), value);
-  if (result == std::end(container)) {
+      std::find(container.begin(), container.end(), value);
+  if (result == container.end()) {
     throw NotFoundException();
   }
   return (result);
