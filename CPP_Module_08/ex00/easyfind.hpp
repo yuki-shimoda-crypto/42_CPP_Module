@@ -13,8 +13,9 @@ public:
   }
 };
 
-template <class T> class T::iterator easyfind(T &container, int value) {
-  class T::iterator result =
+template <class T>
+typename T::iterator easyfind(T &container, int value) {
+  typename T::iterator result =
       std::find(std::begin(container), std::end(container), value);
   if (result == std::end(container)) {
     throw NotFoundException();
