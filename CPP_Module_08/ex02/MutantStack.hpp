@@ -3,10 +3,10 @@
 
 #include <deque>
 #include <iostream>
-#include <stack>
 #include <list>
+#include <stack>
 
-template <class T, class Container = std::deque<T>>
+template <class T, class Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container> {
 public:
   typedef typename Container::iterator iterator;
