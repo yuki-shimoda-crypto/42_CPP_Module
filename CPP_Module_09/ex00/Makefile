@@ -2,7 +2,7 @@ CXX = c++
 
 # 基本のコンパイルフラグ
 #CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # デバッグビルド用のコンパイルフラグ
 CXXFLAGS_DEBUG = $(CXXFLAGS) -g -fsanitize=address -fsanitize=leak -fsanitize=undefined

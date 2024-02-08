@@ -1,6 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-
 int main(int argc, const char *argv[]) {
   Btc btc;
 
@@ -56,7 +55,7 @@ int main(int argc, const char *argv[]) {
       }
       lineCount++;
       continue;
-    } else if (1000 < stod(value)) {
+    } else if (1000 < std::stod(value)) {
       std::cout << "Error: too large a number." << std::endl;
       lineCount++;
       continue;
@@ -64,7 +63,7 @@ int main(int argc, const char *argv[]) {
 
     std::map<std::string, std::string>::const_iterator it = btc.find(key);
     if (it != btc.end()) {
-      std::cout << key << " =>" << value << " = " << stod(value) * stod(it->second) << std::endl;
+      std::cout << key << " =>" << value << " = " << std::stod(value) * std::stod(it->second) << std::endl;
     } else {
       it = btc.lower_bound(key);
       if (it != btc.begin()) {
@@ -74,7 +73,7 @@ int main(int argc, const char *argv[]) {
         lineCount++;
         continue ;
       }
-      std::cout << key << " =>" << value << " = " << stod(value) * stod(it->second) << std::endl;
+      std::cout << key << " =>" << value << " = " << std::stod(value) * std::stod(it->second) << std::endl;
     }
     lineCount++;
   }
