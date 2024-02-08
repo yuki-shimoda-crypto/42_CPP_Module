@@ -29,7 +29,7 @@ int main(int argc, const char *argv[]) {
     pos = line.find("|");
 
     if (!Btc::hasSeparator(pos, 11)) {
-      std::cout << "Error: bad input = " << line << std::endl;
+      std::cout << "Error: bad input => " << line << std::endl;
       lineCount++;
       continue;
     }
@@ -38,7 +38,7 @@ int main(int argc, const char *argv[]) {
     value = line.substr(pos + 1);
 
     if (!Btc::isValidDate(key)) {
-      std::cout << "Error: invalid date = " << key << std::endl;
+      std::cout << "Error: invalid date => " << key << std::endl;
       lineCount++;
       continue;
     }
