@@ -20,11 +20,16 @@ public:
   static bool isValidDate(const std::string &dateStr);
   static bool isValidValue(const std::string &valueStr);
   static void checkOpen(const std::ifstream &file, const std::string &fileName);
-  static void checkFirstLine(const std::string &line, const std::string &str, const std::string &fileName);
-  static bool  hasSeparator(const std::string::size_type &pos, const std::string::size_type &expectedPos);
-  std::map<std::string, std::string>::const_iterator find(const std::string &key) const;
-  std::map<std::string, std::string>::const_iterator lower_bound(const std::string &key) const;
-  std::map<std::string, std::string>::const_iterator upper_bound(const std::string &key) const;
+  static void checkFirstLine(const std::string &line, const std::string &str,
+                             const std::string &fileName);
+  static bool hasSeparator(const std::string::size_type &pos,
+                           const std::string::size_type &expectedPos);
+  std::map<std::string, std::string>::const_iterator
+  find(const std::string &key) const;
+  std::map<std::string, std::string>::const_iterator
+  lower_bound(const std::string &key) const;
+  std::map<std::string, std::string>::const_iterator
+  upper_bound(const std::string &key) const;
   std::map<std::string, std::string>::const_iterator begin() const;
   std::map<std::string, std::string>::const_iterator end() const;
 

@@ -4,8 +4,7 @@
 
 Btc::Btc() { inputDatabase(); }
 
-Btc::Btc(const Btc &btc)
-    : _database(btc._database) {}
+Btc::Btc(const Btc &btc) : _database(btc._database) {}
 
 Btc &Btc::operator=(const Btc &btc) {
   if (this != &btc) {
@@ -61,7 +60,7 @@ void Btc::checkOpen(const std::ifstream &file, const std::string &fileName) {
 }
 
 void Btc::checkFirstLine(const std::string &line, const std::string &str,
-                    const std::string &fileName) {
+                         const std::string &fileName) {
   if (line != str) {
     std::cerr << "Error: The first line of " << fileName << " should be '"
               << str << "'" << std::endl;
@@ -69,23 +68,26 @@ void Btc::checkFirstLine(const std::string &line, const std::string &str,
   }
 }
 
-bool  Btc::hasSeparator(const std::string::size_type &pos,
-                  const std::string::size_type &expectedPos) {
+bool Btc::hasSeparator(const std::string::size_type &pos,
+                       const std::string::size_type &expectedPos) {
   if (pos == std::string::npos || pos != expectedPos) {
     return (false);
   }
   return (true);
 }
 
-std::map<std::string, std::string>::const_iterator Btc::find(const std::string &key) const {
+std::map<std::string, std::string>::const_iterator
+Btc::find(const std::string &key) const {
   return (this->_database.find(key));
 }
 
-std::map<std::string, std::string>::const_iterator Btc::lower_bound(const std::string &key) const {
+std::map<std::string, std::string>::const_iterator
+Btc::lower_bound(const std::string &key) const {
   return (this->_database.lower_bound(key));
 }
 
-std::map<std::string, std::string>::const_iterator Btc::upper_bound(const std::string &key) const {
+std::map<std::string, std::string>::const_iterator
+Btc::upper_bound(const std::string &key) const {
   return (this->_database.upper_bound(key));
 }
 
@@ -108,7 +110,6 @@ void Btc::inputDatabase() {
   std::size_t lineCount = 0;
   std::ifstream btcData(fileName.c_str(), std::ios_base::in);
 
-  
   Btc::checkOpen(btcData, fileName);
 
   while (std::getline(btcData, line)) {
@@ -116,11 +117,10 @@ void Btc::inputDatabase() {
     if (lineCount == 0) {
       Btc::checkFirstLine(line, "date,exchange_rate", fileName);
       lineCount++;
-      continue ;
+      continue;
     }
 
     pos = line.find(",");
-
 
     if (!Btc::hasSeparator(pos, 10)) {
       printErrorInvalidData(lineCount);

@@ -23,15 +23,15 @@ int main(int argc, const char *argv[]) {
     if (lineCount == 0) {
       Btc::checkFirstLine(line, "date | value", argv[1]);
       lineCount++;
-      continue ;
+      continue;
     }
 
     pos = line.find("|");
 
     if (!Btc::hasSeparator(pos, 11)) {
-      std::cout << "Error: bad input = " << line <<  std::endl;
+      std::cout << "Error: bad input = " << line << std::endl;
       lineCount++;
-      continue ;
+      continue;
     }
 
     key = line.substr(0, pos - 1);
@@ -40,7 +40,7 @@ int main(int argc, const char *argv[]) {
     if (!Btc::isValidDate(key)) {
       std::cout << "Error: invalid date = " << key << std::endl;
       lineCount++;
-      continue ;
+      continue;
     }
     if (!Btc::isValidValue(value)) {
       double price;
@@ -63,7 +63,8 @@ int main(int argc, const char *argv[]) {
 
     std::map<std::string, std::string>::const_iterator it = btc.find(key);
     if (it != btc.end()) {
-      std::cout << key << " =>" << value << " = " << std::stod(value) * std::stod(it->second) << std::endl;
+      std::cout << key << " =>" << value << " = "
+                << std::stod(value) * std::stod(it->second) << std::endl;
     } else {
       it = btc.lower_bound(key);
       if (it != btc.begin()) {
@@ -71,9 +72,10 @@ int main(int argc, const char *argv[]) {
       } else {
         std::cout << "Error: invalid date. " << it->first << std::endl;
         lineCount++;
-        continue ;
+        continue;
       }
-      std::cout << key << " =>" << value << " = " << std::stod(value) * std::stod(it->second) << std::endl;
+      std::cout << key << " =>" << value << " = "
+                << std::stod(value) * std::stod(it->second) << std::endl;
     }
     lineCount++;
   }
