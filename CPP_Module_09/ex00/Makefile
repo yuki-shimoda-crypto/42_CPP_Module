@@ -53,11 +53,11 @@ re: fclean all
 
 .PHONY: run
 run: $(NAME)
-	./$(NAME)
+	./$(NAME) input.txt
 
 .PHONY: run_debug
 run_debug: $(NAME_DEBUG)
-	./$(NAME_DEBUG)
+	./$(NAME_DEBUG) input.txt
 
 .PHONY: test
 test: $(NAME)
