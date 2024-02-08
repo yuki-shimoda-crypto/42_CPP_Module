@@ -67,6 +67,13 @@ int main(int argc, const char *argv[]) {
       std::cout << key << " =>" << value << " = " << stod(value) * stod(it->second) << std::endl;
     } else {
       it = btc.lower_bound(key);
+      if (it != btc.begin()) {
+        it--;
+      } else {
+        std::cout << "Error: invalid date. " << it->first << std::endl;
+        lineCount++;
+        continue ;
+      }
       std::cout << key << " =>" << value << " = " << stod(value) * stod(it->second) << std::endl;
     }
     lineCount++;

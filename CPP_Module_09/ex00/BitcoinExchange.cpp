@@ -85,6 +85,14 @@ std::map<std::string, std::string>::const_iterator Btc::lower_bound(const std::s
   return (this->_database.lower_bound(key));
 }
 
+std::map<std::string, std::string>::const_iterator Btc::upper_bound(const std::string &key) const {
+  return (this->_database.upper_bound(key));
+}
+
+std::map<std::string, std::string>::const_iterator Btc::begin() const {
+  return (this->_database.begin());
+}
+
 std::map<std::string, std::string>::const_iterator Btc::end() const {
   return (this->_database.end());
 }
