@@ -29,7 +29,7 @@ int main(int argc, const char *argv[]) {
     pos = line.find("|");
 
     if (!Btc::hasSeparator(pos, 11)) {
-      std::cout << "Error: bad input => " << line << std::endl;
+      std::cerr << "Error: bad input => " << line << std::endl;
       lineCount++;
       continue;
     }
@@ -38,7 +38,7 @@ int main(int argc, const char *argv[]) {
     value = line.substr(pos + 1);
 
     if (!Btc::isValidDate(key)) {
-      std::cout << "Error: invalid date => " << key << std::endl;
+      std::cerr << "Error: invalid date => " << key << std::endl;
       lineCount++;
       continue;
     }
@@ -47,16 +47,16 @@ int main(int argc, const char *argv[]) {
       std::istringstream iss(value);
       iss >> price;
       if (iss.fail()) {
-        std::cout << "Error: not a number." << std::endl;
+        std::cerr << "Error: not a number." << std::endl;
       } else if (iss.peek() != EOF) {
-        std::cout << "Error: too much input." << std::endl;
+        std::cerr << "Error: too much input." << std::endl;
       } else {
-        std::cout << "Error: not a positive number." << std::endl;
+        std::cerr << "Error: not a positive number." << std::endl;
       }
       lineCount++;
       continue;
     } else if (1000 < std::stod(value)) {
-      std::cout << "Error: too large a number." << std::endl;
+      std::cerr << "Error: too large a number." << std::endl;
       lineCount++;
       continue;
     }
@@ -70,7 +70,7 @@ int main(int argc, const char *argv[]) {
       if (it != btc.begin()) {
         it--;
       } else {
-        std::cout << "Error: invalid date. " << it->first << std::endl;
+        std::cerr << "Error: invalid date. " << it->first << std::endl;
         lineCount++;
         continue;
       }
