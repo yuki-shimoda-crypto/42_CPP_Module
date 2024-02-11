@@ -62,4 +62,52 @@ CommandLineParser::operator=(const CommandLineParser &parser) {
   return (*this);
 }
 
-//
+// VectorMergeInsertionSort
+
+// public
+VectorMergeInsertionSort::VectorMergeInsertionSort(){}
+VectorMergeInsertionSort::~VectorMergeInsertionSort(){}
+
+// private
+void VectorMergeInsertionSort::sort(std::vector<long> &container) {
+  std::cout << "vector sort" << std::endl;
+  (void)container;
+}
+
+VectorMergeInsertionSort::VectorMergeInsertionSort(
+    const VectorMergeInsertionSort &sort)
+    : MergeInsertionSort(sort) {
+  (void)sort;
+}
+
+VectorMergeInsertionSort &
+VectorMergeInsertionSort::operator=(const VectorMergeInsertionSort &sort) {
+  if (this != &sort) {
+  }
+  return (*this);
+}
+
+// ListMergeInsertionSort
+
+// public
+ListMergeInsertionSort::ListMergeInsertionSort(){}
+ListMergeInsertionSort::~ListMergeInsertionSort(){}
+
+// private
+void ListMergeInsertionSort::sort(std::list<long> &container) {
+  std::cout << "list sort" << std::endl;
+  (void)container;
+}
+
+ListMergeInsertionSort::ListMergeInsertionSort(
+    const ListMergeInsertionSort &sort)
+    : MergeInsertionSort(sort) {
+  (void)sort;
+}
+
+ListMergeInsertionSort &
+ListMergeInsertionSort::operator=(const ListMergeInsertionSort &sort) {
+  if (this != &sort) {
+  }
+  return (*this);
+}
