@@ -55,7 +55,7 @@ int main(int argc, const char *argv[]) {
       }
       lineCount++;
       continue;
-    } else if (1000 < std::stod(value)) {
+    } else if (1000 < Btc::stod(value)) {
       std::cerr << "Error: too large a number." << std::endl;
       lineCount++;
       continue;
@@ -64,7 +64,7 @@ int main(int argc, const char *argv[]) {
     std::map<std::string, std::string>::const_iterator it = btc.find(key);
     if (it != btc.end()) {
       std::cout << key << " =>" << value << " = "
-                << std::stod(value) * std::stod(it->second) << std::endl;
+                << Btc::stod(value) * Btc::stod(it->second) << std::endl;
     } else {
       it = btc.lower_bound(key);
       if (it != btc.begin()) {
@@ -75,7 +75,7 @@ int main(int argc, const char *argv[]) {
         continue;
       }
       std::cout << key << " =>" << value << " = "
-                << std::stod(value) * std::stod(it->second) << std::endl;
+                << Btc::stod(value) * Btc::stod(it->second) << std::endl;
     }
     lineCount++;
   }

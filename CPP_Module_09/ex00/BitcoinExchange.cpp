@@ -99,6 +99,18 @@ std::map<std::string, std::string>::const_iterator Btc::end() const {
   return (this->_database.end());
 }
 
+double Btc::stod(const std::string &str) {
+  double num;
+
+  std::istringstream iss(str);
+  iss >> num;
+  if (iss.fail() || iss.peek() != EOF) {
+    std::cerr << "Error: stod." << std::endl;
+    std::exit(EXIT_FAILURE);
+  } 
+  return (num);
+}
+
 // private
 
 void Btc::inputDatabase() {

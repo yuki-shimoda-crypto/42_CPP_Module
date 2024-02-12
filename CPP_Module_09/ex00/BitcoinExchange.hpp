@@ -24,6 +24,7 @@ public:
                              const std::string &fileName);
   static bool hasSeparator(const std::string::size_type &pos,
                            const std::string::size_type &expectedPos);
+  static double stod(const std::string &str);
   std::map<std::string, std::string>::const_iterator
   find(const std::string &key) const;
   std::map<std::string, std::string>::const_iterator
