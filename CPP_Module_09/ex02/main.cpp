@@ -10,21 +10,31 @@ int main(int argc, const char *argv[]) {
     VectorMergeInsertionSort sortVec;
     ListMergeInsertionSort sortList;
 
-    //display
+    // display input
     sortVec.displayInput(numVec);
-//    sortList.displayInput(numList);
-    
-    //sort
-    std::size_t timeVec = sortVec.sortAndMeasure(numVec);
-    std::size_t timeList = sortList.sortAndMeasure(numList);
-    
-    //display
-    sortVec.displayOutput(numVec);
-//    sortList.displayOutput(numList);
+    // sortList.displayInput(numList);
 
-    // time
+    // sort
+    long timeVec = sortVec.sortAndMeasure(numVec);
+    long timeList = sortList.sortAndMeasure(numList);
+
+    // display output
+    sortVec.displayOutput(numVec);
+    // sortList.displayOutput(numList);
+
+    // display time
     sortVec.displayTime(numVec, "std::vector", timeVec);
     sortList.displayTime(numList, "std::list", timeList);
+
+    // debug
+    // std::vector<long> testVec = parser.getVector();
+    // //sortVec.displayOutput(testVec);
+    // std::sort(testVec.begin(), testVec.end());
+    // if (sortVec.isEqualContainer(testVec, numVec)) {
+    //   std::cout << "true" << std::endl;
+    // } else {
+    //   std::cout << "false" << std::endl;
+    // }
 
   } catch (const std::exception &e) {
     std::cerr << "Error: " << e.what() << std::endl;

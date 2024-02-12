@@ -65,13 +65,48 @@ CommandLineParser::operator=(const CommandLineParser &parser) {
 // VectorMergeInsertionSort
 
 // public
-VectorMergeInsertionSort::VectorMergeInsertionSort(){}
-VectorMergeInsertionSort::~VectorMergeInsertionSort(){}
+VectorMergeInsertionSort::VectorMergeInsertionSort() {}
+VectorMergeInsertionSort::~VectorMergeInsertionSort() {}
 
 // private
 void VectorMergeInsertionSort::sort(std::vector<long> &container) {
   std::cout << "vector sort" << std::endl;
-  (void)container;
+
+  if (container.size() <= 1) {
+    return;
+  }
+
+  std::vector<long> smaller, larger;
+
+  // first pairs of elements are compared;
+  for (std::size_t i = 0; i < container.size(); i += 2) {
+    if (i + 1 < container.size()) {
+      if (container.at(i) < container.at(i + 1)) {
+        smaller.push_back(container.at(i));
+        larger.push_back(container.at(i + 1));
+      } else {
+        smaller.push_back(container.at(i + 1));
+        larger.push_back(container.at(i));
+      }
+    } else {
+      larger.push_back(container.at(i));
+    }
+  }
+
+  // second step the larger elements are sorted recursively;
+  sort(larger);
+
+  // last step the elements belonging to the smaller half are inserted into the
+  // already sorted larger half using binary insertion.
+  for (std::size_t i = 0; i < smaller.size(); i++) {
+    std::vector<long>::iterator insertPos =
+        binarySearchInsertPosition(larger, smaller.at(i));
+    larger.insert(insertPos, smaller.at(i));
+  }
+
+  container = larger;
+  showContainerElement(larger);
+  std::cout << "---" << std::endl;
 }
 
 VectorMergeInsertionSort::VectorMergeInsertionSort(
@@ -90,8 +125,8 @@ VectorMergeInsertionSort::operator=(const VectorMergeInsertionSort &sort) {
 // ListMergeInsertionSort
 
 // public
-ListMergeInsertionSort::ListMergeInsertionSort(){}
-ListMergeInsertionSort::~ListMergeInsertionSort(){}
+ListMergeInsertionSort::ListMergeInsertionSort() {}
+ListMergeInsertionSort::~ListMergeInsertionSort() {}
 
 // private
 void ListMergeInsertionSort::sort(std::list<long> &container) {

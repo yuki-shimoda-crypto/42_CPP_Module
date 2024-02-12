@@ -1,14 +1,15 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
+#include <algorithm>
 #include <cstdio>
 #include <cstdlib>
 #include <exception>
 #include <iostream>
 #include <list>
 #include <sstream>
-#include <vector>
 #include <sys/time.h>
+#include <vector>
 
 class CommandLineParser {
 public:
@@ -46,7 +47,7 @@ public:
     displayContainer("after:\t", container);
   };
 
-  std::size_t sortAndMeasure(Container &container){
+  long sortAndMeasure(Container &container) {
     struct timeval start, end;
 
     gettimeofday(&start, NULL);
@@ -54,32 +55,76 @@ public:
     (void)(container);
     gettimeofday(&end, NULL);
 
-    std::size_t second = end.tv_sec - start.tv_sec;
-    std::size_t micoro = (second * 1000000) + (end.tv_usec - start.tv_usec);
+    long second = end.tv_sec - start.tv_sec;
+    long micoro = (second * 1000000) + (end.tv_usec - start.tv_usec);
     return (micoro);
   };
 
-  void displayTime(Container &container, std::string str, std::size_t time) {
+  void displayTime(Container &container, std::string str, long time) {
     std::cout << "Time to process a range of " << container.size()
               << " elements with " << str << " : " << time << " us"
               << std::endl;
   };
 
+  // debig
+  bool isEqualContainer(const Container &first, const Container &second) {
+    if (first.size() != second.size()) {
+      return (false);
+    }
+
+    typename Container::const_iterator itFirst = first.begin();
+    typename Container::const_iterator itSecond = second.begin();
+    while (itFirst != first.end()) {
+      if (*itFirst != *itSecond) {
+        return (false);
+      }
+      itFirst++;
+      itSecond++;
+    }
+    return (true);
+  }
+
 protected:
-    virtual void sort(Container &container) = 0;
-    MergeInsertionSort(const MergeInsertionSort &sort){(void)sort;};
+  virtual void sort(Container &container) = 0;
+
+  typename Container::iterator binarySearchInsertPosition(Container &container,
+                                                          long num) {
+    typename Container::iterator low = container.begin();
+    typename Container::iterator high = container.end();
+    typename Container::iterator mid;
+
+    while (low < high) {
+      mid = low + (std::distance(low, high) / 2);
+      if (num < *mid) {
+        high = mid;
+      } else {
+        low = mid + 1;
+      }
+    }
+    return (low);
+  };
+
+  // debig
+  void showContainerElement(Container &container) {
+    typename Container::const_iterator it = container.begin();
+    for (; it != container.end(); it++) {
+      std::cout << *it << std::endl;
+    }
+  };
+
+  MergeInsertionSort(const MergeInsertionSort &sort) { (void)sort; };
 
 private:
   void displayContainer(const std::string &prefix,
                         const Container &container) const {
     std::cout << prefix;
     if (container.size() <= 5) {
-      for (unsigned long i = 0; i < container.size(); i++) {
+      for (std::size_t i = 0; i < container.size(); i++) {
         std::cout << container.at(i) << ' ';
       }
       std::cout << std::endl;
     } else {
-      for (unsigned long i = 0; i < 4; i++) {
+      for (std::size_t i = 0; i < 4; i++) {
         std::cout << container.at(i) << ' ';
       }
       std::cout << "[...]" << std::endl;
@@ -100,7 +145,6 @@ private:
   VectorMergeInsertionSort(const VectorMergeInsertionSort &sort);
   VectorMergeInsertionSort &operator=(const VectorMergeInsertionSort &sort);
 };
-
 
 class ListMergeInsertionSort : public MergeInsertionSort<std::list<long> > {
 public:
