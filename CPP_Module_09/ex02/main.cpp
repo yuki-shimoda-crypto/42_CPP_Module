@@ -30,6 +30,7 @@ int main(int argc, const char *argv[]) {
     // std::vector<long> testVec = parser.getVector();
     // //sortVec.displayOutput(testVec);
     // std::sort(testVec.begin(), testVec.end());
+    // sortVec.showContainerElement(numVec);
     // if (sortVec.isEqualContainer(testVec, numVec)) {
     //   std::cout << "true" << std::endl;
     // } else {

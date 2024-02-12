@@ -67,6 +67,13 @@ public:
   };
 
   // debig
+  void showContainerElement(Container &container) {
+    typename Container::const_iterator it = container.begin();
+    for (; it != container.end(); it++) {
+      std::cout << *it << std::endl;
+    }
+  };
+
   bool isEqualContainer(const Container &first, const Container &second) {
     if (first.size() != second.size()) {
       return (false);
@@ -102,14 +109,6 @@ protected:
       }
     }
     return (low);
-  };
-
-  // debig
-  void showContainerElement(Container &container) {
-    typename Container::const_iterator it = container.begin();
-    for (; it != container.end(); it++) {
-      std::cout << *it << std::endl;
-    }
   };
 
   MergeInsertionSort(const MergeInsertionSort &sort) { (void)sort; };

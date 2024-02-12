@@ -70,8 +70,6 @@ VectorMergeInsertionSort::~VectorMergeInsertionSort() {}
 
 // private
 void VectorMergeInsertionSort::sort(std::vector<long> &container) {
-  std::cout << "vector sort" << std::endl;
-
   if (container.size() <= 1) {
     return;
   }
@@ -105,8 +103,6 @@ void VectorMergeInsertionSort::sort(std::vector<long> &container) {
   }
 
   container = larger;
-  showContainerElement(larger);
-  std::cout << "---" << std::endl;
 }
 
 VectorMergeInsertionSort::VectorMergeInsertionSort(
