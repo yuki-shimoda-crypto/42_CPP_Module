@@ -132,7 +132,9 @@ private:
     }
   };
 
-  MergeInsertionSort &operator=(const MergeInsertionSort &sort){};
+  MergeInsertionSort &operator=(const MergeInsertionSort &sort){
+    (void)sort;
+  };
 };
 
 class VectorMergeInsertionSort : public MergeInsertionSort<std::vector<long> > {

@@ -133,8 +133,8 @@ void ListMergeInsertionSort::sort(std::list<long> &container) {
   std::list<long> smaller, larger;
 
   // first pairs of elements are compared;
-  typename std::list<long>::iterator it = container.begin();
-  typename std::list<long>::iterator current;
+  std::list<long>::iterator it = container.begin();
+  std::list<long>::iterator current;
 
   while (it != container.end()) {
     current = it++;
