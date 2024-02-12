@@ -26,16 +26,27 @@ int main(int argc, const char *argv[]) {
     sortVec.displayTime(numVec, "std::vector", timeVec);
     sortList.displayTime(numList, "std::list", timeList);
 
-    // debug
-    // std::vector<long> testVec = parser.getVector();
-    // //sortVec.displayOutput(testVec);
-    // std::sort(testVec.begin(), testVec.end());
-    // sortVec.showContainerElement(numVec);
-    // if (sortVec.isEqualContainer(testVec, numVec)) {
-    //   std::cout << "true" << std::endl;
-    // } else {
-    //   std::cout << "false" << std::endl;
-    // }
+    //    // debug vector
+    //    std::vector<long> ansVec = parser.getVector();
+    //    std::sort(ansVec.begin(), ansVec.end());
+    //    if (sortVec.isEqualContainer(ansVec, numVec)) {
+    //      std::cout << "true" << std::endl;
+    //    } else {
+    //      std::cout << "false" << std::endl;
+    //    }
+    //
+    //    // debug list
+    //    std::list<long> ansList = parser.getList();
+    //    ansList.sort();
+    //    if (sortList.isEqualContainer(ansList, numList)) {
+    //      std::cout << "true" << std::endl;
+    //    } else {
+    //      std::cout << "false" << std::endl;
+    //    }
+
+    //    // debug show element
+    //    sortVec.showContainerElement(numVec);
+    //    sortList.showContainerElement(numList);
 
   } catch (const std::exception &e) {
     std::cerr << "Error: " << e.what() << std::endl;

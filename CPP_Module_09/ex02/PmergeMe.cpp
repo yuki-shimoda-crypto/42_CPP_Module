@@ -126,8 +126,46 @@ ListMergeInsertionSort::~ListMergeInsertionSort() {}
 
 // private
 void ListMergeInsertionSort::sort(std::list<long> &container) {
-  std::cout << "list sort" << std::endl;
-  (void)container;
+  if (container.size() <= 1) {
+    return;
+  }
+
+  std::list<long> smaller, larger;
+
+  // first pairs of elements are compared;
+  typename std::list<long>::iterator it = container.begin();
+  typename std::list<long>::iterator current;
+
+  while (it != container.end()) {
+    current = it++;
+    if (it != container.end()) {
+      if (*current < *it) {
+        smaller.push_back(*current);
+        larger.push_back(*it);
+      } else {
+        smaller.push_back(*it);
+        larger.push_back(*current);
+      }
+      it++;
+    } else {
+      larger.push_back(*current);
+    }
+  }
+
+  // second step the larger elements are sorted recursively;
+  sort(larger);
+
+  // last step the elements belonging to the smaller half are inserted into the
+  // already sorted larger half using binary insertion.
+  for (std::list<long>::iterator it = smaller.begin(); it != smaller.end();
+       it++) {
+    std::list<long>::iterator insertPos = larger.begin();
+    while (insertPos != larger.end() && *insertPos < *it) {
+      insertPos++;
+    }
+    larger.insert(insertPos, *it);
+  }
+  container = larger;
 }
 
 ListMergeInsertionSort::ListMergeInsertionSort(

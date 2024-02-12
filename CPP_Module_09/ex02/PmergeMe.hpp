@@ -118,13 +118,15 @@ private:
                         const Container &container) const {
     std::cout << prefix;
     if (container.size() <= 5) {
-      for (std::size_t i = 0; i < container.size(); i++) {
-        std::cout << container.at(i) << ' ';
+      for (typename Container::const_iterator it = container.begin();
+           it != container.end(); it++) {
+        std::cout << *it << ' ';
       }
       std::cout << std::endl;
     } else {
-      for (std::size_t i = 0; i < 4; i++) {
-        std::cout << container.at(i) << ' ';
+      typename Container::const_iterator it = container.begin();
+      for (std::size_t i = 0; i < 4 && it != container.end(); i++, it++) {
+        std::cout << *it << ' ';
       }
       std::cout << "[...]" << std::endl;
     }
